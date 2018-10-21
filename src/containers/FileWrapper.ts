@@ -2,7 +2,7 @@ import { Dispatch } from "redux"
 import { connect } from "react-redux"
 import FileWrapper from "../components/FileWrapper"
 import { withRouter, RouteComponentProps } from "react-router-dom"
-import { loadFile } from "../actions/file"
+import { loadFile, removeCachedFile } from "../actions/file"
 import { IRootState } from "../store"
 
 const mapStateToProps = (state: IRootState) => ({
@@ -12,6 +12,8 @@ const mapStateToProps = (state: IRootState) => ({
 const mapDispatchToProps = (dispatch: Dispatch, props: RouteComponentProps) => {
   return {
     loadFile: () => {
+      dispatch(removeCachedFile())
+
       const path = props.location.pathname.split("/")
       const fileUri = path[path.length - 1]
       return dispatch(loadFile({fileUri}))

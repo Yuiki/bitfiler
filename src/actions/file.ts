@@ -11,4 +11,5 @@ interface ISuccessedLoadFile {
 const actionCreator = actionCreatorFactory()
 
 export const loadFile = actionCreator<ILoadFilePayload>("LOAD_FILE")
+export const removeCachedFile = actionCreator("REMOVE_CACHED_FILE")
 export const successedLoadFile = actionCreator<ISuccessedLoadFile>("SUCCESSED_LOAD_FILE")

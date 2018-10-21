@@ -1,6 +1,6 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers"
 import { initialState } from "../store"
-import { successedLoadFile } from "../actions/file"
+import { successedLoadFile, removeCachedFile } from "../actions/file"
 import { successedLoadFilesList } from "../actions/filesList"
 
 const rootReducer = reducerWithInitialState(initialState)
@@ -11,6 +11,10 @@ const rootReducer = reducerWithInitialState(initialState)
   .case(successedLoadFilesList, (state, payload) => ({
     ...state,
     filesList: payload.filesList
+  }))
+  .case(removeCachedFile, (state) => ({
+    ...state,
+    watchingFile: undefined
   }))
 
 export default rootReducer
